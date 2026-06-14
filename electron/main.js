@@ -31,6 +31,11 @@ app.whenReady().then(() => {
     const filePath = decodeURIComponent(request.url.replace('localfile://', ''))
     callback({ path: filePath })
   })
+
+  ipcMain.handle('get-user-data-path', () => {
+    return app.getPath('userData')
+  })
+
   createWindow()
 })
 
